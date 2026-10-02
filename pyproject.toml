@@ -1,0 +1,32 @@
+[project]
+name = "xblock-asset-snapshots"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Fox Danger Piacenti", email = "fox@opencraft.com" }
+]
+requires-python = ">=3.11"
+dependencies = [
+    "xblock",
+]
+[dependency-groups]
+dev = [
+    "requests",
+]
+
+[build-system]
+requires = ["uv_build>=0.11.7,<0.12.0"]
+build-backend = "uv_build"
+
+
+[project.entry-points."xblock.v1"]
+xblock_asset_snapshots = "xblock_asset_snapshots:AssetSnapshot"
+
+[tool.uv]
+package = true
+
+[tool.uv.build-backend]
+module-name = [
+    "xblock_asset_snapshots"
+]
