@@ -23,7 +23,7 @@ build-backend = "uv_build"
 
 
 [project.entry-points."xblock.v1"]
-xblock_asset_snapshots = "xblock_asset_snapshots:AssetSnapshot"
+xblock_verawood_assets = "xblock_verawood_assets:AssetSnapshot"
 
 [tool.uv]
 package = true

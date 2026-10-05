@@ -1,0 +1,3 @@
+[submodule "paragon"]
+	path = paragon
+	url = https://github.com/openedx/paragon.git

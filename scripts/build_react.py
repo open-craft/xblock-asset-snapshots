@@ -134,12 +134,12 @@ def install_react(react_version: str, platform_version: str) -> None:
         f"Installing React version {react_version} into public directory for platform version {platform_version}"
     )
     target_directory = (
-        ROOT_DIR / "src" / "xblock_asset_snapshots" / "public" / platform_version
+        ROOT_DIR / "src" / f"xblock_{platform_version}_assets" / "public" / "react"
     )
     Path.mkdir(target_directory, parents=True, exist_ok=True)
     os.replace(
         react_directory(react_version) / "react.js",
-        target_directory / "react.js",
+        target_directory / "index.js",
     )
 
 
