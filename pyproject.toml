@@ -13,6 +13,8 @@ dependencies = [
 [dependency-groups]
 dev = [
     "requests",
+    "ruff",
+    "mypy",
 ]
 
 [build-system]
@@ -30,3 +32,8 @@ package = true
 module-name = [
     "xblock_asset_snapshots"
 ]
+
+[[tool.mypy.overrides]]
+#module = ["xblock.*", "web_fragments.*", "workbench.settings"]
+# Attempt to infer types as best as possible.
+follow_untyped_imports = true
