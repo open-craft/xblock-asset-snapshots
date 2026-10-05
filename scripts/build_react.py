@@ -4,8 +4,8 @@ import os
 import re
 import subprocess
 from argparse import ArgumentParser
-from pathlib import Path
 from io import BytesIO
+from pathlib import Path
 from tarfile import TarFile
 
 import requests
@@ -84,10 +84,12 @@ def pull_react(version: str) -> None:
     result.raise_for_status()
     tarball = TarFile(fileobj=BytesIO(gzip.decompress(result.content)))
     to_save = tarball.extractfile(file_path_for_react_version(version))
+    if to_save is None:
+        raise TypeError("React file in archive is not a regular file or link.")
 
     Path.mkdir(directory, parents=True, exist_ok=True)
-    with open(directory / "react.js", "wb") as result:
-        result.write(to_save.read())
+    with open(directory / "react.js", "wb") as output:
+        output.write(to_save.read())
 
 
 def munge_react(version: str) -> None:
@@ -115,13 +117,16 @@ def munge_react(version: str) -> None:
 def prettify_react(version: str) -> None:
     print("Formatting downloaded React version...")
     subprocess.run(
-        ["pnpm", "exec", "oxfmt", str(react_directory(version) / "react.js")]
+        ["pnpm", "exec", "oxfmt", str(react_directory(version) / "react.js")],
+        check=True,
     )
 
 
 def minify_react(version: str) -> None:
     print("Minifying munged React version...")
-    subprocess.run([str(MINIFY_PATH), str(react_directory(version) / "react.js")])
+    subprocess.run(
+        [str(MINIFY_PATH), str(react_directory(version) / "react.js")], check=True
+    )
 
 
 def install_react(react_version: str, platform_version: str) -> None:

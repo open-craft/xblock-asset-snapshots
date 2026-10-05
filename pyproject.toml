@@ -34,6 +34,6 @@ module-name = [
 ]
 
 [[tool.mypy.overrides]]
-#module = ["xblock.*", "web_fragments.*", "workbench.settings"]
+module = ["xblock.*", "web_fragments.*"]
 # Attempt to infer types as best as possible.
 follow_untyped_imports = true
