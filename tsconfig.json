@@ -1,0 +1,4 @@
+{
+  "include": ["scripts/**/*.ts"],
+  "exclude": ["scratch/*"]
+}

@@ -1,0 +1,25 @@
+name: Python Quality Checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches:
+      - "**"
+
+jobs:
+  javascript-tests:
+    name: Run Python Quality Checks
+    runs-on: alpine
+    steps:
+      - name: Install Prerequirements
+        run: apk add uv
+
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Install dependencies
+        run: uv sync
+
+      - name: Run quality checks
+        run: uv run

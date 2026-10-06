@@ -1,0 +1,33 @@
+{
+  "name": "xblock-asset-snapshots",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "scripts": {
+    "lint": "oxlint scripts && oxfmt --check scripts",
+    "lint:fix": "oxlint --fix scripts && oxfmt scripts"
+  },
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": "12.8.1",
+      "onFail": "download"
+    }
+  },
+  "dependencies": {
+    "commander": "^15.0.0",
+    "oxc-minify": "^0.152.0",
+    "oxfmt": "^0.71.0"
+  },
+  "packageManager": "pnpm@12.8.1",
+  "type": "module",
+  "devDependencies": {
+    "@vitejs/plugin-react": "^6.1.2",
+    "oxlint": "^1.86.0",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.2"
+  }
+}
