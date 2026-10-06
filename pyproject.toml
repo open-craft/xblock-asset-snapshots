@@ -23,14 +23,14 @@ build-backend = "uv_build"
 
 
 [project.entry-points."xblock.v1"]
-xblock_verawood_assets = "xblock_verawood_assets:AssetSnapshot"
+xblock_verawood_assets = "xblock_verawood_assets:VerawoodSnapshot"
 
 [tool.uv]
 package = true
 
 [tool.uv.build-backend]
 module-name = [
-    "xblock_asset_snapshots"
+    "xblock_verawood_assets"
 ]
 
 [[tool.mypy.overrides]]
